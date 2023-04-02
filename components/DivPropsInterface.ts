@@ -3,5 +3,5 @@ export default interface DivProps {
   style: object;
   name: string;
   childrenDivs: DivProps[];
-  findParent?: (name:string, node:object) => void;
+  findParent?: (name:string) => void;
 }

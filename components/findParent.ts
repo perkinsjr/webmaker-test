@@ -1,7 +1,9 @@
-export default function findParent(name: string, node: object): void {
+import { initialTemplate } from "./InitialTemplate";
+
+export default function findParent(name: string): void {
     let stack = [];
     let ii = null;
-    stack.push({ node: node, parent: null });
+    stack.push({ node: initialTemplate, parent: null });
     while (stack.length > 0) {
       const { node, parent }: any = stack.pop();
       if (node.name === name) {

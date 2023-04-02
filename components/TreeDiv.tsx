@@ -1,13 +1,12 @@
 "use client";
 import DivProps from "./DivPropsInterface";
-import { initialTemplate } from "./InitialTemplate";
 
 function TreeDiv({ text, style, name, childrenDivs, findParent }: DivProps) {
   return (
     <div className="w-auto relative flex flex-col gap-1 border-solid border-2 border-gray-400">
       <button
         onClick={(e) => {
-          findParent && findParent(name, initialTemplate);
+          findParent && findParent(name);
         }}
       >
         {name}
