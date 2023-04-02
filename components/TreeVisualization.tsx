@@ -1,13 +1,8 @@
+'use client'
 import TreeDiv from "./TreeDiv";
+import DivProps from "./DivPropsInterface";
 
-interface DivProps {
-  text: string;
-  style: object;
-  name: string;
-  childrenDivs: DivProps[];
-}
-
-function TreeVisualization({ text, style, name, childrenDivs }: DivProps) {
+function TreeVisualization({ text, style, name, childrenDivs, findParent }: DivProps) {
   return (
     <div>
       <div>Visualização</div>
@@ -16,6 +11,7 @@ function TreeVisualization({ text, style, name, childrenDivs }: DivProps) {
         style={style}
         childrenDivs={childrenDivs}
         text={text}
+        findParent={findParent}
       />
     </div>
   );
