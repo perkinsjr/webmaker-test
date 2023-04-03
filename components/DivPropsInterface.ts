@@ -4,4 +4,5 @@ export default interface DivProps {
   name: string;
   childrenDivs: DivProps[];
   findParent?: (name:string) => void;
+  addDiv?: (name:string) => void
 }

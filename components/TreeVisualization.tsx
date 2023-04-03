@@ -2,7 +2,7 @@
 import TreeDiv from "./TreeDiv";
 import DivProps from "./DivPropsInterface";
 
-function TreeVisualization({ text, style, name, childrenDivs, findParent }: DivProps) {
+function TreeVisualization({ text, style, name, childrenDivs, findParent, addDiv }: DivProps) {
   return (
     <div>
       <div>Visualização</div>
@@ -12,6 +12,7 @@ function TreeVisualization({ text, style, name, childrenDivs, findParent }: DivP
         childrenDivs={childrenDivs}
         text={text}
         findParent={findParent}
+        addDiv={addDiv}
       />
     </div>
   );

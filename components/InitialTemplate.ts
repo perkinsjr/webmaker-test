@@ -6,6 +6,7 @@ const initialTemplate: DivProps = {
     fontWeight: "bold",
     border: "2px solid #efefef",
     width: "fit-content",
+    height: 'fit-content'
   },
   text: "Olá mundo!",
   name: "root",
