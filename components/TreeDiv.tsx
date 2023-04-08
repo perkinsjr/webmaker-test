@@ -14,7 +14,7 @@ function TreeDiv({
     console.log(name, childrenDivs, text, style, findParent, addDiv);
   }, []);
   return (
-    <div className="w-fit flex flex-col gap-1 border-solid border-2 border-gray-400">
+    <div className="w-fit flex flex-col gap-1">
       <div>{name}</div>
       <div className="flex flex-row gap-1">
         <button
@@ -60,7 +60,7 @@ function TreeDiv({
           </svg>
         </button>
       </div>
-      <div className="ml-5">
+      <div className="ml-4">
         {childrenDivs.map((child, index) => (
           <TreeDiv
             {...child}

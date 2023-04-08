@@ -9,17 +9,17 @@ const initialTemplate: DivProps = {
     height: 'fit-content'
   },
   text: "Olá mundo!",
-  name: "root",
+  name: `root-10000000`,
   childrenDivs: [
     {
       style: { fontSize: "20px", border: "2px solid #ff0000" },
       text: "Estou dentro de outra div.",
-      name: "inside",
+      name: `inception-10000000`,
       childrenDivs: [
         {
           style: { fontSize: "15px", border: "2px solid #0000ff" },
           text: "Estou dentro de 2 divs!",
-          name: "inception",
+          name: `inception-10000000`,
           childrenDivs: [],
         },
       ],

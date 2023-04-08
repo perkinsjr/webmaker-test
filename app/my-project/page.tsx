@@ -25,16 +25,16 @@ function MyProject() {
         if (node.childrenDivs.length) {
           node.childrenDivs.push({
             ...baseDiv,
-            name: `Nova div-${Math.floor(Math.random() * 1000000)}`,
+            name: `Nova div-${Math.floor(Math.random() * 10000000)}`,
           });
-        } 
+        }
         // Por algum motivo, é preciso este else para setar o array diretamente quando ele está vazio, ou
         // dar push em uma nova div quando ele já está populado (senão, irá ocorrer uma re-renderização infinita).
         else {
           node.childrenDivs = [
             {
               ...baseDiv,
-              name: `Nova div-${Math.floor(Math.random() * 1000000)}`,
+              name: `Nova div-${Math.floor(Math.random() * 10000000)}`,
             },
           ];
         }
@@ -74,15 +74,38 @@ function MyProject() {
     setTemplate(newTemplate);
   }
 
+  function editDiv(name: string, param: string, value: any) {
+    let newTemplate = { ...currentTemplate };
+    let stack = [];
+    let ii = null;
+    stack.push({ node: newTemplate, parent: null });
+    while (stack.length > 0) {
+      const { node, parent }: any = stack.pop();
+      if (node.name === name) {
+        // Found it!
+        node[param] = value;
+        break;
+      } else if (node.childrenDivs.length) {
+        for (ii = 0; ii < node.childrenDivs.length; ii += 1) {
+          stack.push({ node: node.childrenDivs[ii], parent: null });
+        }
+      }
+    }
+    setTemplate(newTemplate);
+  }
+
   return (
-    <div className="grid grid-cols-2">
-      <Div {...currentTemplate} />
+    <>
+      <div className="bg-white w-5/6 h-5/6">
+        <Div {...currentTemplate} />
+      </div>
       <TreeVisualization
         {...currentTemplate}
         addDiv={addDiv}
+        editDiv={editDiv}
         findParent={findParent}
       />
-    </div>
+    </>
   );
 }
 
