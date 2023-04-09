@@ -1,20 +1,18 @@
 "use client";
 import TreeDiv from "./TreeDiv";
 import EditDivStyle from "./EditDivStyle";
-import DivProps from "./DivPropsInterface";
 import { useState } from "react";
 
 function TreeVisualization({
-  text,
-  style,
-  name,
-  childrenDivs,
+  rootDiv,
   findParent,
+  currentDivStyle,
+  currentDiv,
   addDiv,
   editDiv,
-}: DivProps) {
+}: any) {
   const [isVisible, setVisibility] = useState(true);
-  const [currentDiv, setCurrentDiv] = useState("root-10000000");
+
   return (
     <div
       className={`absolute ${
@@ -22,7 +20,7 @@ function TreeVisualization({
       } top-0 h-screen w-48 flex flex-row gap-0 transition-all duration-500 justify-center`}
     >
       <button
-        className="relative bg-lt-blue1 text-white"
+        className="relative bg-white text-lt-blue1"
         onClick={() => setVisibility(!isVisible)}
       >
         <svg
@@ -40,19 +38,19 @@ function TreeVisualization({
           />
         </svg>
       </button>
-      <div className="flex flex-col items-center gap-2 bg-lt-blue1 h-full p-1">
-        <div className="bg-white rounded-lg h-1/2 w-40">
+      <div className="flex flex-col items-center gap-2 bg-white h-full p-1">
+        <div className="bg-gray-100 rounded-lg h-1/2 w-40">
           <TreeDiv
-            name={name}
-            style={style}
-            childrenDivs={childrenDivs}
-            text={text}
+            name={rootDiv.name}
+            style={rootDiv.style}
+            childrenDivs={rootDiv.childrenDivs}
+            text={rootDiv.text}
             findParent={findParent}
             addDiv={addDiv}
             editDiv={editDiv}
           />
         </div>
-        <EditDivStyle />
+        <EditDivStyle style={currentDivStyle} currentDiv={currentDiv} editDiv={editDiv}/>
       </div>
     </div>
   );

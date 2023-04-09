@@ -12,6 +12,7 @@ const baseDiv = {
 
 function MyProject() {
   const [currentTemplate, setTemplate] = useState(initialTemplate);
+  const [currentDiv, setCurrentDiv] = useState("inception-10000000");
 
   function addDiv(name: string) {
     let newTemplate = { ...currentTemplate };
@@ -94,7 +95,7 @@ function MyProject() {
     setTemplate(newTemplate);
   }
 
-  function editDivStyle(name: string, param: string, value: any) {
+  function currentDivStyle(name: string) {
     let newTemplate = { ...currentTemplate };
     let stack = [];
     let ii = null;
@@ -103,7 +104,7 @@ function MyProject() {
       const { node, parent }: any = stack.pop();
       if (node.name === name) {
         // Found it!
-        node.style[param] = value;
+        return node.style;
         break;
       } else if (node.childrenDivs.length) {
         for (ii = 0; ii < node.childrenDivs.length; ii += 1) {
@@ -111,7 +112,7 @@ function MyProject() {
         }
       }
     }
-    setTemplate(newTemplate);
+    return {}
   }
 
   return (
@@ -120,10 +121,11 @@ function MyProject() {
         <Div {...currentTemplate} />
       </div>
       <TreeVisualization
-        {...currentTemplate}
+        rootDiv={{...currentTemplate}}
         addDiv={addDiv}
         editDiv={editDiv}
         findParent={findParent}
+        currentDivStyle={currentDivStyle(currentDiv)}
       />
     </>
   );
