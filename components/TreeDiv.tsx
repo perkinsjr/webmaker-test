@@ -9,10 +9,8 @@ function TreeDiv({
   childrenDivs,
   findParent,
   addDiv,
+  editDiv,
 }: DivProps) {
-  useEffect(() => {
-    console.log(name, childrenDivs, text, style, findParent, addDiv);
-  }, []);
   return (
     <div className="w-fit flex flex-col gap-1">
       <div>{name}</div>

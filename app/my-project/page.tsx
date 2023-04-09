@@ -94,6 +94,26 @@ function MyProject() {
     setTemplate(newTemplate);
   }
 
+  function editDivStyle(name: string, param: string, value: any) {
+    let newTemplate = { ...currentTemplate };
+    let stack = [];
+    let ii = null;
+    stack.push({ node: newTemplate, parent: null });
+    while (stack.length > 0) {
+      const { node, parent }: any = stack.pop();
+      if (node.name === name) {
+        // Found it!
+        node.style[param] = value;
+        break;
+      } else if (node.childrenDivs.length) {
+        for (ii = 0; ii < node.childrenDivs.length; ii += 1) {
+          stack.push({ node: node.childrenDivs[ii], parent: null });
+        }
+      }
+    }
+    setTemplate(newTemplate);
+  }
+
   return (
     <>
       <div className="bg-white w-5/6 h-5/6">
