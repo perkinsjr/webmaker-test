@@ -13,13 +13,13 @@ function TreeDiv({
 }: DivProps) {
   return (
     <div className="w-fit flex flex-col gap-1">
-      <div>{name}</div>
-      <div className="flex flex-row gap-1">
+      <div className="flex flex-row items-center w-fit">
+      <div className="truncate w-1/2">{name}</div>
         <button
           onClick={() => {
             findParent && findParent(name);
           }}
-          className="flex justify-center border-solid border-2 border-red-500 w-fit px-2 py-1"
+          className="flex justify-center border-solid border-2 border-red-500 h-fit p-1"
         >
           <svg
             xmlns="http://www.w3.org/2000/svg"
@@ -27,7 +27,7 @@ function TreeDiv({
             viewBox="0 0 24 24"
             strokeWidth={1.5}
             stroke="currentColor"
-            className="w-6 h-6"
+            className="w-4 h-4"
           >
             <path
               strokeLinecap="round"
@@ -40,7 +40,7 @@ function TreeDiv({
           onClick={() => {
             addDiv && addDiv(name);
           }}
-          className="flex justify-center border-solid border-2 border-red-500 w-fit px-2 py-1"
+          className="flex justify-center border-solid border-2 border-red-500 h-fit p-1"
         >
           <svg
             xmlns="http://www.w3.org/2000/svg"
@@ -48,7 +48,7 @@ function TreeDiv({
             viewBox="0 0 24 24"
             strokeWidth={1.5}
             stroke="currentColor"
-            className="w-6 h-6"
+            className="w-4 h-4"
           >
             <path
               strokeLinecap="round"

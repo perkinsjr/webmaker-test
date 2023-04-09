@@ -18,11 +18,11 @@ function TreeVisualization({
   return (
     <div
       className={`absolute ${
-        isVisible ? "right-0" : "-right-32"
-      } top-0 h-screen w-40 flex flex-row gap-0 transition-all duration-500`}
+        isVisible ? "right-0" : "-right-40"
+      } top-0 h-screen w-48 flex flex-row gap-0 transition-all duration-500 justify-center`}
     >
       <button
-        className="relative bg-blue-300"
+        className="relative bg-lt-blue1 text-white"
         onClick={() => setVisibility(!isVisible)}
       >
         <svg
@@ -40,18 +40,18 @@ function TreeVisualization({
           />
         </svg>
       </button>
-      <div className="flex flex-col gap-2 bg-blue-100 h-full p-4">
-        <div>Visualização</div>
-        <div className="bg-white rounded-lg"></div>
-        <TreeDiv
-          name={name}
-          style={style}
-          childrenDivs={childrenDivs}
-          text={text}
-          findParent={findParent}
-          addDiv={addDiv}
-          editDiv={editDiv}
-        />
+      <div className="flex flex-col items-center gap-2 bg-lt-blue1 h-full p-1">
+        <div className="bg-white rounded-lg h-1/2 w-40">
+          <TreeDiv
+            name={name}
+            style={style}
+            childrenDivs={childrenDivs}
+            text={text}
+            findParent={findParent}
+            addDiv={addDiv}
+            editDiv={editDiv}
+          />
+        </div>
         <EditDivStyle />
       </div>
     </div>
