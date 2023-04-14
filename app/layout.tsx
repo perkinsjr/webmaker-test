@@ -21,7 +21,6 @@ export default function RootLayout({
               colorBgContainer: '#111727',
               colorTextBase: '#ffffff',
               colorPrimary: '#434CE6',
-              //colorPrimaryActive: '#1D04BF',
               colorPrimaryBg: '#344153',
               colorBorder: '#ffffff',
               colorIcon: '#1D04BF'

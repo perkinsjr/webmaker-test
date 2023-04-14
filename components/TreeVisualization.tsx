@@ -9,12 +9,38 @@ function TreeVisualization({
   rootDiv,
   findParent,
   currentDivStyle,
+  currentDivText,
   currentDiv,
   addDiv,
   setCurrentDiv,
   editDiv,
 }: any) {
   const [isVisible, setVisibility] = useState(true);
+  const [expandedKeys, setKeys] = useState([]);
+
+  useEffect(() => {
+    // Get all keys from treeData recursively
+    const allKeys: any = [];
+    const getKeys = (data: any) => {
+      data.forEach((item: any) => {
+        allKeys.push(item.key);
+        if (item.children) {
+          getKeys(item.children);
+        }
+      });
+    };
+    getKeys(
+      mapDataTreeToOutput({
+        style: {},
+        text: "",
+        name: "",
+        childrenDivs: [rootDiv],
+      })
+    );
+
+    // Set expandedKeys to all keys
+    setKeys(allKeys);
+  }, [rootDiv]);
   function mapDataTreeToOutput(dataTree: any) {
     // Create an array to hold the output objects
     const output = [];
@@ -67,7 +93,7 @@ function TreeVisualization({
           <div className="flex flex-row justify-end gap-0 absolute right-1 top-1 z-10">
             <button
               className="text-red-500 hover:bg-dk-gray1 rounded-md p-1"
-              onClick={() => findParent(currentDiv)}
+              onClick={() => {findParent(currentDiv);setCurrentDiv('root')}}
             >
               <svg
                 xmlns="http://www.w3.org/2000/svg"
@@ -107,10 +133,12 @@ function TreeVisualization({
           <div>
             <Tree
               switcherIcon={<DownOutlined />}
-              //defaultExpandedKeys={["0-0-0"]}
+              showLine
               onSelect={(e) => setCurrentDiv(e[0])}
-              defaultExpandAll={true}
-              virtual={true}
+              defaultExpandAll
+              expandedKeys={expandedKeys}
+              onExpand={(keys:any) => setKeys(keys)}
+              selectedKeys={[currentDiv]}
               treeData={mapDataTreeToOutput({
                 style: {},
                 text: "",
@@ -122,10 +150,14 @@ function TreeVisualization({
           <div className="flex flex-col gap-1 row-auto">
             <Input
               value={currentDiv}
-              onChange={(e) => editDiv(currentDiv, "name", e.target.value)}
+              onChange={(e) => {
+                editDiv(currentDiv, "name", e.target.value);
+                setCurrentDiv(e.target.value);
+              }}
             />
             <TextArea
               style={{ resize: "none" }}
+              value={currentDivText}
               rows={2}
               onChange={(e) => editDiv(currentDiv, "text", e.target.value)}
             />

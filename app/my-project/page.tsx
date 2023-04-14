@@ -12,7 +12,7 @@ const baseDiv = {
 
 function MyProject() {
   const [currentTemplate, setTemplate] = useState(initialTemplate);
-  const [currentDiv, setCurrentDiv] = useState("inception-10000000");
+  const [currentDiv, setCurrentDiv] = useState("inception-1");
 
   function addDiv(name: string) {
     let newTemplate = { ...currentTemplate };
@@ -114,6 +114,24 @@ function MyProject() {
     }
     return {}
   }
+  function currentDivText(name: string) {
+    let newTemplate = { ...currentTemplate };
+    let stack = [];
+    let ii = null;
+    stack.push({ node: newTemplate, parent: null });
+    while (stack.length > 0) {
+      const { node, parent }: any = stack.pop();
+      if (node.name === name) {
+        // Found it!
+        return node.text;
+      } else if (node.childrenDivs.length) {
+        for (ii = 0; ii < node.childrenDivs.length; ii += 1) {
+          stack.push({ node: node.childrenDivs[ii], parent: null });
+        }
+      }
+    }
+    return {}
+  }
 
   return (
     <>
@@ -126,6 +144,7 @@ function MyProject() {
         editDiv={editDiv}
         findParent={findParent}
         currentDivStyle={currentDivStyle(currentDiv)}
+        currentDivText={currentDivText(currentDiv)}
         currentDiv={currentDiv}
         setCurrentDiv={setCurrentDiv}
       />
