@@ -1,18 +1,33 @@
-function EditDivStyle({ currentDiv, editDiv, style }: any) {
+import React, { useState } from "react";
+import type { RadioChangeEvent } from "antd";
+import { sizeProps, selectableProps } from "./styleProps";
+import { Radio } from "antd";
+
+const plainOptions = ["flex", "block", "grid", "none"];
+
+function EditDivStyle({ currentDiv, currentDivStyle, editDiv, style }: any) {
   function returnStyle(param: string, defaultValue: string) {
-    const styleValue = style ? style[param] : defaultValue;
-    console.log(styleValue)
+    const styleValue = style[param] ? style[param] : defaultValue;
+    console.log(styleValue);
     return styleValue;
   }
   const flexStyle = returnStyle("display", "block");
   return (
-    <div className="bg-gray-100 flex flex-col rounded-lg h-1/2 w-40">
-      <div className="flex flex-row gap-1 flex-wrap">
-        <div className="font-bold">display</div>
-        <div className={`border-2 border-solid rounded-md ${flexStyle === "block" ? "border-green-300" : "border-gray-300"}`}>block</div>
-        <div className={`border-2 border-solid rounded-md ${flexStyle === "grid" ? "border-green-300" : "border-gray-300"}`}>grid</div>
-        <div className={`border-2 border-solid rounded-md ${flexStyle === "flex" ? "border-green-300" : "border-gray-300"}`}>flex</div>
-        <div className={`border-2 border-solid rounded-md ${flexStyle === "none" ? "border-green-300" : "border-gray-300"}`}>none</div>
+    <div className="bg-dk-gray2 flex flex-col rounded-lg h-1/2 w-60 mr-2 mt-1 mb-2">
+      <div className="flex flex-col justify-center items-center">
+        <div className="font-bold text-white">display</div>
+        <Radio.Group
+          options={plainOptions}
+          onChange={(e) =>
+            editDiv(currentDiv, "style", {
+              ...currentDivStyle,
+              display: e.target.value,
+            })
+          }
+          size="small"
+          value={flexStyle}
+          optionType="button"
+        />
       </div>
     </div>
   );

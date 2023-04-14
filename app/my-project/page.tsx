@@ -16,6 +16,7 @@ function MyProject() {
 
   function addDiv(name: string) {
     let newTemplate = { ...currentTemplate };
+    console.log('chamei', name);
     let stack = [];
     let ii = null;
     stack.push({ node: newTemplate, parent: null });
@@ -105,7 +106,6 @@ function MyProject() {
       if (node.name === name) {
         // Found it!
         return node.style;
-        break;
       } else if (node.childrenDivs.length) {
         for (ii = 0; ii < node.childrenDivs.length; ii += 1) {
           stack.push({ node: node.childrenDivs[ii], parent: null });
@@ -126,6 +126,8 @@ function MyProject() {
         editDiv={editDiv}
         findParent={findParent}
         currentDivStyle={currentDivStyle(currentDiv)}
+        currentDiv={currentDiv}
+        setCurrentDiv={setCurrentDiv}
       />
     </>
   );
