@@ -1,4 +1,5 @@
 'use client'
+// use client é necessário
 import { ConfigProvider } from "antd";
 import "./globals.css";
 

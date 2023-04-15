@@ -17,6 +17,9 @@ module.exports = {
         'lt-blue1': '#1D04BF',
         'lt-blue2': '#15038C',
         'lt-blue3': '#16193B',
+        'water-green': '#20DF9F',
+        'water-cyan': '#18BFAB',
+        'water-blue': '#1997BC',
         'dk-gray1': '#1d263d',
         'dk-gray2': '#111727',
       }

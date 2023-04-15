@@ -13,7 +13,7 @@ function EditDivStyle({ currentDiv, currentDivStyle, editDiv, style }: any) {
   }
   const flexStyle = returnStyle("display", "block");
   return (
-    <div className="bg-dk-gray2 flex flex-col rounded-lg h-1/2 w-60 mr-2 mt-1 mb-2">
+    <div className="bg-dk-gray2 flex flex-col h-1/2 w-full">
       <div className="flex flex-col justify-center items-center">
         <div className="font-bold text-white">display</div>
         <Radio.Group

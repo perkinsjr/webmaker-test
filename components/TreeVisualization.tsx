@@ -66,7 +66,7 @@ function TreeVisualization({
   return (
     <div
       className={`absolute ${
-        isVisible ? "-right-2" : "-right-64"
+        isVisible ? "-right-7" : "-right-56"
       } top-0 h-screen w-72 flex flex-row gap-0 transition-all duration-500 justify-center`}
     >
       <button
@@ -89,7 +89,7 @@ function TreeVisualization({
         </svg>
       </button>
       <div className="flex flex-col items-center gap-0 bg-lt-blue3 h-full">
-        <div className="bg-dk-gray2 rounded-lg h-1/2 w-60 p-1 mr-2 mt-2 mb-1 relative grid grid-rows-1">
+        <div className="bg-dk-gray2 h-1/2 w-full p-1 relative grid grid-rows-1 overflow-scroll resize-y h-1/2">
           <div className="flex flex-row justify-end gap-0 absolute right-1 top-1 z-10">
             <button
               className="text-red-500 hover:bg-dk-gray1 rounded-md p-1"

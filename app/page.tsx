@@ -6,8 +6,8 @@ const inter = Inter({ subsets: ["latin"] });
 
 export default function Home() {
   return (
-    <div>
-      <div>Hello World</div>
+    <div className="flex flex-col items-center gap-4 pt-4">
+      <div className="text-8xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-water-blue via-water-cyan to-water-green tracking-tight">Webmaker.</div>
       <Link href="/my-project">Get started</Link>
     </div>
   );
