@@ -16,10 +16,11 @@ export default function RootLayout({
             token:{
               colorBgContainer: '#111727',
               colorTextBase: '#ffffff',
-              colorPrimary: '#434CE6',
-              colorPrimaryBg: '#344153',
+              colorPrimary: '#18BFAB',
+              colorPrimaryBg: '#1d263d',
+              colorBgElevated: '#1d263d',
               colorBorder: '#ffffff',
-              colorIcon: '#1D04BF'
+              colorIcon: '#ffffff',
             }
           }}
         >
