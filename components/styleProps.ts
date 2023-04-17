@@ -6,28 +6,23 @@ const selectableProps = [
   },
   {
     prop: "justifyContent",
-    defValue: "",
-    options: [""],
+    defValue: "start",
+    options: ["start", "center", "end"],
   },
   {
     prop: "alignItems",
-    defValue: "",
-    options: [""],
+    defValue: "start",
+    options: ["start", "center", "end"],
   },
   {
     prop: "placeItems",
-    defValue: "block",
-    options: [""],
+    defValue: "start",
+    options: ["start", "center", "end"],
   },
   {
     prop: "position",
     defValue: "",
-    options: [""],
-  },
-  {
-    prop: "textDecoration",
-    defValue: "",
-    options: [""],
+    options: ["static", "relative", "absolute", "fixed", "sticky"],
   },
 ];
 const sizeProps = [
@@ -56,10 +51,7 @@ const sizeProps = [
     prop: "left",
   },
   {
-    prop: "opacity"
-  },
-  {
-    prop: "zIndex"
+    prop: "gap"
   }
 ];
 

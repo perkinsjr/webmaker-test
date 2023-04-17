@@ -17,7 +17,7 @@ const initialTemplate: DivProps = {
       name: `inception-1`,
       childrenDivs: [
         {
-          style: { fontSize: "15px", border: "2px solid #0000ff" },
+          style: { fontSize: "15px", border: "2px solid", borderColor: '#0000ff' },
           text: "Estou dentro de 2 divs!",
           name: `inception-2`,
           childrenDivs: [],

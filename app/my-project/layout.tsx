@@ -3,7 +3,7 @@ function ProjectLayout({
 }: {
   children: React.ReactNode;
 }) {
-  return <div className="bg-gray-300 w-full h-full grid place-items-center">{children}</div>;
+  return <div className="bg-gray-300 w-screen overflow-y-hidden overflow-x-hidden h-screen relative">{children}</div>;
 }
 
 export default ProjectLayout;

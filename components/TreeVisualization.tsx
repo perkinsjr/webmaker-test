@@ -15,6 +15,8 @@ function TreeVisualization({
   addDiv,
   setCurrentDiv,
   editDiv,
+  colorPallete,
+  setColorPallete,
 }: any) {
   const [isVisible, setVisibility] = useState(true);
   const [expandedKeys, setKeys] = useState([]);
@@ -66,9 +68,8 @@ function TreeVisualization({
 
   return (
     <div
-      className={`absolute ${
-        isVisible ? "right-0" : "-right-48"
-      } top-0 h-screen w-56 flex flex-row gap-0 transition-all duration-500 justify-center`}
+      className={`${isVisible ? "right-0" : "-right-48"} 
+      absolute top-0 h-screen w-56 flex flex-row gap-0 transition-all duration-500 justify-center`}
     >
       <button
         className="relative bg-dk-gray1 text-water-cyan"
@@ -80,7 +81,7 @@ function TreeVisualization({
           viewBox="0 0 24 24"
           strokeWidth={1.5}
           stroke="currentColor"
-          className="w-6 h-6"
+          className={`transform duration-500 ${isVisible ? "rotate-180" : "rotate-0"} w-6 h-6`}
         >
           <path
             strokeLinecap="round"
@@ -92,7 +93,7 @@ function TreeVisualization({
       <div className="flex flex-col items-center gap-0 h-screen bg-dk-gray2">
         <ResizableComponent>
           <div className="bg-dk-gray2 w-full h-full p-2 relative grid rounded-b-md grid-rows-1">
-            <div className="flex flex-row justify-end gap-0 absolute right-1 top-1">
+            <div className="flex flex-row justify-end gap-0 absolute right-1 top-1 z-10">
               <button
                 className="text-red-500 hover:bg-dk-gray1 rounded-md p-1"
                 onClick={() => {
@@ -170,6 +171,8 @@ function TreeVisualization({
           </div>
         </ResizableComponent>
         <EditDivStyle
+          colorPallete={colorPallete}
+          setColorPallete={setColorPallete}
           style={currentDivStyle}
           currentDiv={currentDiv}
           currentDivStyle={currentDivStyle}
