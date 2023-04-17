@@ -15,17 +15,14 @@ function MyProject() {
   const [currentTemplate, setTemplate] = useState(initialTemplate);
   const [currentDiv, setCurrentDiv] = useState("inception-1");
   const [size, setSize] = useState({ width: 250, height: 250 });
-  const [windowWidth, setWindowWidth] = useState(window.innerWidth);
-  const [windowHeight, setWindowHeight] = useState(window.innerHeight);
+  const [windowWidth, setWindowWidth] = useState(0);
+  const [windowHeight, setWindowHeight] = useState(0);
   const [colorPallete, setColorPallete] = useState([
     { hex: "#ffffff", name: "white" },
     { hex: "#000000", name: "black" },
     { hex: "#0000ff", name: "blue" },
   ]);
-  const [position, setPosition] = useState({
-    x: windowWidth / 2 - size.width / 2,
-    y: windowHeight / 2 - size.height / 2,
-  });
+  const [position, setPosition] = useState({ x: 0, y: 0 });
 
   useEffect(() => {
     if (
@@ -43,14 +40,17 @@ function MyProject() {
       setPosition(newPosition);
     }
   }, [position, size]);
+  
   useEffect(() => {
     const handleResize = () => {
       setWindowWidth(window.innerWidth);
       setWindowHeight(window.innerHeight);
     };
+    handleResize();
     window.addEventListener("resize", handleResize);
     return () => window.removeEventListener("resize", handleResize);
   }, []);
+
   useEffect(() => {
     setPosition({
       x: windowWidth / 2 - size.width / 2,
@@ -184,7 +184,7 @@ function MyProject() {
         minHeight={200}
         disableDragging={true}
         size={size}
-        bounds='parent'
+        bounds="parent"
         enableResizing={{
           top: true,
           right: true,
