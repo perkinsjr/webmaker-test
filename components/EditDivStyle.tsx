@@ -93,8 +93,8 @@ function EditDivStyle({
               })
             }
           >
-            {colorPallete.map((color: any) => (
-              <Option value={color.hex}>
+            {colorPallete.map((color: any, index:number) => (
+              <Option value={color.hex} key={index}>
                 <div className="flex flex-row gap-2 justify-start items-center">
                   <ColorCircle color={color.hex} />
                   {color.name}
