@@ -29,7 +29,6 @@ function MyProject() {
       position.x > windowWidth / 2 - size.width / 2 ||
       position.y > windowHeight / 2 - size.height / 2
     ) {
-      console.log("ta errado isso ai");
       let newPosition = { ...position };
       if (newPosition.x > windowWidth / 2 - size.width / 2) {
         newPosition.x = windowWidth / 2 - size.width / 2;
@@ -195,6 +194,12 @@ function MyProject() {
           bottomLeft: false,
           topLeft: false,
         }}
+        resizeHandleComponent={{
+          top: <div className="flex justify-center items-center absolute w-full py-2 -top-4 opacity-60 hover:opacity-100"><div className="opacity-inherit rounded-md h-1.5 w-20 bg-water-cyan"></div></div>,
+          left: <div className="flex justify-center items-center absolute h-full px-2 -left-4 opacity-60 hover:opacity-100"><div className="opacity-inherit rounded-md h-20 w-1.5 bg-water-cyan"></div></div>,
+          right: <div className="flex justify-center items-center absolute h-full px-2 -right-4 opacity-60 hover:opacity-100"><div className="opacity-inherit rounded-md h-20 w-1.5 bg-water-cyan"></div></div>,
+          bottom: <div className="flex justify-center items-center absolute w-full py-2 -bottom-4 opacity-60 hover:opacity-100"><div className="opacity-inherit rounded-md h-1.5 w-20 bg-water-cyan"></div></div>
+        }}
         onDragStop={(e, d) => setPosition({ x: d.x, y: d.y })}
         position={position}
         onResize={(e, direction, ref, delta, position) => {
@@ -226,7 +231,7 @@ function MyProject() {
           });
         }}
       >
-        <div className="bg-white h-full m-0">
+        <div className="bg-white m-0 h-full overflow-hidden">
           <Div {...currentTemplate} />
         </div>
       </Rnd>
