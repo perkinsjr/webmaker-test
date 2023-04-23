@@ -1,6 +1,6 @@
-'use client'
-// use client é necessário
-import { ConfigProvider } from "antd";
+import { ClerkProvider } from "@clerk/nextjs/app-beta";
+import { ptBR } from "@clerk/localizations";
+import { dark } from '@clerk/themes';
 import "./globals.css";
 
 export default function RootLayout({
@@ -9,24 +9,12 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en">
-      <body>
-        <ConfigProvider
-          theme={{
-            token:{
-              colorBgContainer: '#111727',
-              colorTextBase: '#ffffff',
-              colorPrimary: '#18BFAB',
-              colorPrimaryBg: '#1d263d',
-              colorBgElevated: '#1d263d',
-              colorBorder: '#ffffff',
-              colorIcon: '#ffffff',
-            }
-          }}
-        >
+    <ClerkProvider localization={ptBR} appearance={{baseTheme: dark}}>
+      <html className="bg-dk-gray1" lang="en">
+        <body>
           {children}
-        </ConfigProvider>
-      </body>
-    </html>
+        </body>
+      </html>
+    </ClerkProvider>
   );
 }

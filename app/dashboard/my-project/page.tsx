@@ -1,7 +1,8 @@
 "use client";
-import Div from "../../components/Div";
-import TreeVisualization from "../../components/TreeVisualization";
-import { initialTemplate } from "../../components/InitialTemplate";
+import Div from "../../../components/Div";
+import TreeVisualization from "../../../components/TreeVisualization";
+import { initialTemplate } from "../../../components/InitialTemplate";
+import { ConfigProvider } from "antd";
 import { useRef, useState, useEffect } from "react";
 import { Rnd } from "react-rnd";
 
@@ -39,7 +40,7 @@ function MyProject() {
       setPosition(newPosition);
     }
   }, [position, size]);
-  
+
   useEffect(() => {
     const handleResize = () => {
       setWindowWidth(window.innerWidth);
@@ -195,10 +196,26 @@ function MyProject() {
           topLeft: false,
         }}
         resizeHandleComponent={{
-          top: <div className="flex justify-center items-center absolute w-full py-2 -top-4 opacity-60 hover:opacity-100"><div className="opacity-inherit rounded-md h-1.5 w-20 bg-water-cyan"></div></div>,
-          left: <div className="flex justify-center items-center absolute h-full px-2 -left-4 opacity-60 hover:opacity-100"><div className="opacity-inherit rounded-md h-20 w-1.5 bg-water-cyan"></div></div>,
-          right: <div className="flex justify-center items-center absolute h-full px-2 -right-4 opacity-60 hover:opacity-100"><div className="opacity-inherit rounded-md h-20 w-1.5 bg-water-cyan"></div></div>,
-          bottom: <div className="flex justify-center items-center absolute w-full py-2 -bottom-4 opacity-60 hover:opacity-100"><div className="opacity-inherit rounded-md h-1.5 w-20 bg-water-cyan"></div></div>
+          top: (
+            <div className="flex justify-center items-center absolute w-full py-2 -top-4 opacity-60 hover:opacity-100">
+              <div className="opacity-inherit rounded-md h-1.5 w-20 bg-water-cyan"></div>
+            </div>
+          ),
+          left: (
+            <div className="flex justify-center items-center absolute h-full px-2 -left-4 opacity-60 hover:opacity-100">
+              <div className="opacity-inherit rounded-md h-20 w-1.5 bg-water-cyan"></div>
+            </div>
+          ),
+          right: (
+            <div className="flex justify-center items-center absolute h-full px-2 -right-4 opacity-60 hover:opacity-100">
+              <div className="opacity-inherit rounded-md h-20 w-1.5 bg-water-cyan"></div>
+            </div>
+          ),
+          bottom: (
+            <div className="flex justify-center items-center absolute w-full py-2 -bottom-4 opacity-60 hover:opacity-100">
+              <div className="opacity-inherit rounded-md h-1.5 w-20 bg-water-cyan"></div>
+            </div>
+          ),
         }}
         onDragStop={(e, d) => setPosition({ x: d.x, y: d.y })}
         position={position}
@@ -235,19 +252,32 @@ function MyProject() {
           <Div {...currentTemplate} />
         </div>
       </Rnd>
-
-      <TreeVisualization
-        rootDiv={{ ...currentTemplate }}
-        addDiv={addDiv}
-        editDiv={editDiv}
-        findParent={findParent}
-        currentDivStyle={currentDivStyle(currentDiv)}
-        currentDivText={currentDivText(currentDiv)}
-        currentDiv={currentDiv}
-        setCurrentDiv={setCurrentDiv}
-        colorPallete={colorPallete}
-        setColorPallete={setColorPallete}
-      />
+      <ConfigProvider
+        theme={{
+          token: {
+            colorBgContainer: "#111727",
+            colorTextBase: "#ffffff",
+            colorPrimary: "#18BFAB",
+            colorPrimaryBg: "#1d263d",
+            colorBgElevated: "#1d263d",
+            colorBorder: "#ffffff",
+            colorIcon: "#ffffff",
+          },
+        }}
+      >
+        <TreeVisualization
+          rootDiv={{ ...currentTemplate }}
+          addDiv={addDiv}
+          editDiv={editDiv}
+          findParent={findParent}
+          currentDivStyle={currentDivStyle(currentDiv)}
+          currentDivText={currentDivText(currentDiv)}
+          currentDiv={currentDiv}
+          setCurrentDiv={setCurrentDiv}
+          colorPallete={colorPallete}
+          setColorPallete={setColorPallete}
+        />
+      </ConfigProvider>
     </>
   );
 }
